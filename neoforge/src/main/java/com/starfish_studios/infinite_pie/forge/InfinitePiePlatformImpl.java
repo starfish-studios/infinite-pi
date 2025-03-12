@@ -1,7 +1,7 @@
 package com.starfish_studios.infinite_pie.forge;
 
 import com.starfish_studios.infinite_pie.InfinitePiePlatform;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLPaths;
 
 import java.nio.file.Path;
 

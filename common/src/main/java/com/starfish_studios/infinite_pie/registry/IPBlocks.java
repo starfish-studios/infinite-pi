@@ -14,7 +14,7 @@ public class IPBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(InfinitePie.MOD_ID, Registries.BLOCK);
 
     public static final Supplier<Block> INFINITE_PIE = BLOCKS.register("infinite_pie", () -> new InfinitePiBlock(
-            BlockBehaviour.Properties.copy((Blocks.CAKE))
+            BlockBehaviour.Properties.ofFullCopy((Blocks.CAKE))
                     .noOcclusion()
     ));
 

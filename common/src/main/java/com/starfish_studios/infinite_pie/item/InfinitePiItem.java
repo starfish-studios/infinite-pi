@@ -5,6 +5,7 @@ import com.starfish_studios.infinite_pie.IPConfig;
 import com.starfish_studios.infinite_pie.InfinitePie;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
@@ -79,19 +80,17 @@ public class InfinitePiItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack itemStack) {
+    public int getUseDuration(ItemStack itemStack, LivingEntity livingEntity) {
         return IPConfig.piEatingSpeed;
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
-        CompoundTag tag = itemStack.getOrCreateTag();
-
-        int eatCount = tag.getInt("eatCount");
+        int eatCount = itemStack.getOrDefault(InfinitePie.EAT_COUNT_COMPONENT.get(), 0);
         eatCount++;
-        tag.putInt("eatCount", eatCount);
+        itemStack.set(InfinitePie.EAT_COUNT_COMPONENT.get(), eatCount);
 
-        String currentPiLore = tag.getString("piLore");
+        String currentPiLore = itemStack.getOrDefault(InfinitePie.PI_LORE_COMPONENT.get(), "");
         if (currentPiLore.isEmpty()) {
             currentPiLore = "3." + PI_DIGITS.charAt(0);
         } else {
@@ -101,7 +100,7 @@ public class InfinitePiItem extends Item {
                 currentPiLore += nextDigit;
             }
         }
-        tag.putString("piLore", currentPiLore);
+        itemStack.set(InfinitePie.PI_LORE_COMPONENT.get(), currentPiLore);
 
         if (!level.isClientSide && livingEntity instanceof Player player) {
             player.getFoodData().eat(piHunger, piSaturation);
@@ -111,9 +110,9 @@ public class InfinitePiItem extends Item {
         }
 
         if (eatCount >= 314 && !level.isClientSide && livingEntity instanceof ServerPlayer serverPlayer) {
-            Advancement advancement = Objects.requireNonNull(serverPlayer.getServer())
+            AdvancementHolder advancement = Objects.requireNonNull(serverPlayer.getServer())
                     .getAdvancements()
-                    .getAdvancement(new ResourceLocation(InfinitePie.MOD_ID, "husbandry/pie_times_pi"));
+                    .get(ResourceLocation.fromNamespaceAndPath(InfinitePie.MOD_ID, "husbandry/pie_times_pi"));
             if (advancement != null) {
                 AdvancementProgress progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
                 if (!progress.isDone()) {
@@ -129,14 +128,14 @@ public class InfinitePiItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        if (!world.isClientSide && stack.hasTag()) {
-            CompoundTag tag = stack.getTag();
-            assert tag != null;
-            int eatCount = tag.getInt("eatCount");
-            int digitsToShow = eatCount <= 0 ? 1 : Math.min(eatCount, PI_DIGITS.length());
-            String expectedLore = "3." + PI_DIGITS.substring(0, digitsToShow);
-            if (!expectedLore.equals(tag.getString("piLore"))) {
-                tag.putString("piLore", expectedLore);
+        if (!world.isClientSide) {
+            if (stack.has(InfinitePie.EAT_COUNT_COMPONENT.get()) && stack.has(InfinitePie.PI_LORE_COMPONENT.get())) {
+                int eatCount = stack.getOrDefault(InfinitePie.EAT_COUNT_COMPONENT.get(), 0);
+                int digitsToShow = eatCount <= 0 ? 1 : Math.min(eatCount, PI_DIGITS.length());
+                String expectedLore = "3." + PI_DIGITS.substring(0, digitsToShow);
+                if (!expectedLore.equals(stack.get(InfinitePie.PI_LORE_COMPONENT.get()))) {
+                    stack.set(InfinitePie.PI_LORE_COMPONENT.get(), expectedLore);
+                }
             }
         }
     }
@@ -147,10 +146,9 @@ public class InfinitePiItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
-        CompoundTag tag = stack.getTag();
-        if (tag != null) {
-            String piLore = tag.getString("piLore");
+    public void appendHoverText(ItemStack stack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
+        if (stack.has(InfinitePie.PI_LORE_COMPONENT.get()) && stack.has(InfinitePie.EAT_COUNT_COMPONENT.get())) {
+            String piLore = stack.getOrDefault(InfinitePie.PI_LORE_COMPONENT.get(), "");
             if (piLore.isEmpty()) {
                 piLore = "3." + PI_DIGITS.charAt(0);
             }
@@ -160,7 +158,7 @@ public class InfinitePiItem extends Item {
 
             tooltip.add(Component.literal("Eaten ")
                     .withStyle(ChatFormatting.GRAY)
-                    .append(Component.literal(String.valueOf(tag.getInt("eatCount")))
+                    .append(Component.literal(String.valueOf(stack.get(InfinitePie.EAT_COUNT_COMPONENT.get())))
                             .withStyle(ChatFormatting.YELLOW)
                             .append(Component.literal(" time(s)")
                                     .withStyle(ChatFormatting.GRAY))));
@@ -175,6 +173,7 @@ public class InfinitePiItem extends Item {
                 tooltip.add(Component.literal(line).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC));
             }
         }
-        super.appendHoverText(stack, level, tooltip, flag);
+
+        super.appendHoverText(stack, tooltipContext, tooltip, tooltipFlag);
     }
 }

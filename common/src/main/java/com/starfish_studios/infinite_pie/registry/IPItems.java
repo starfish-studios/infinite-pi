@@ -2,6 +2,7 @@ package com.starfish_studios.infinite_pie.registry;
 
 import com.starfish_studios.infinite_pie.IPConfig;
 import com.starfish_studios.infinite_pie.InfinitePie;
+import com.starfish_studios.infinite_pie.item.InfinitePiItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
@@ -13,9 +14,9 @@ public class IPItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(InfinitePie.MOD_ID, Registries.ITEM);
 
     public static final RegistrySupplier<Item> INFINITE_PIE = ITEMS.register("infinite_pie", () ->
-            new Item(new Item.Properties()
+            new InfinitePiItem(new Item.Properties()
                     .stacksTo(IPConfig.piMaxStackSize)
-                    .food(new FoodProperties.Builder().nutrition(20).saturationMod(1.0F).alwaysEat().build())
+                    .food(new FoodProperties.Builder().nutrition(20).saturationModifier(1.0F).alwaysEdible().build())
                     .rarity(Rarity.EPIC)
                     .fireResistant()));
 

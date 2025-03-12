@@ -1,6 +1,7 @@
 package com.starfish_studios.infinite_pie.mixin;
 
 
+import com.starfish_studios.infinite_pie.InfinitePie;
 import com.starfish_studios.infinite_pie.registry.IPItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -40,9 +41,9 @@ public abstract class ItemEntityMixin {
         double y = ((ItemEntity)(Object)this).getY();
         if (y < -65) {
             ItemStack stack = getItem();
-            CompoundTag tag = stack.getTag();
-            if (tag != null && tag.contains("InfinitePiOwner")) {
-                UUID ownerUUID = tag.getUUID("InfinitePiOwner");
+            var data = stack.get(InfinitePie.INFINITE_PIE_OWNER_COMPONENT.get());
+            if (data != null) {
+                UUID ownerUUID = UUID.fromString(data);
                 Level level = ((ItemEntity)(Object)this).level();
                 Player owner = level.getPlayerByUUID(ownerUUID);
                 if (owner != null) {

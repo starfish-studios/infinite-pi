@@ -1,6 +1,7 @@
 package com.starfish_studios.infinite_pie.mixin;
 
 
+import com.starfish_studios.infinite_pie.InfinitePie;
 import com.starfish_studios.infinite_pie.registry.IPItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -19,8 +20,7 @@ public abstract class PlayerMixin {
         if (stack.getItem() == IPItems.INFINITE_PIE) {
             Player self = (Player)(Object)this;
             System.out.println("Infinite Pie dropped by " + self.getName().getString());
-            CompoundTag tag = stack.getOrCreateTag();
-            tag.putUUID("InfinitePiOwner", self.getUUID());
+            stack.set(InfinitePie.INFINITE_PIE_OWNER_COMPONENT.get(), self.getUUID().toString());
         }
     }
 }
