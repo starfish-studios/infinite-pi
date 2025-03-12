@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "https://github.com/starfish-studios/infinite-pi/blob/main/LICENSE"
+
+[[mods]]
+modId = "infinite_pie"
+version = "${version}"
+displayName = "Infinite Pie"
+authors = "Starfish Studios"
+description = '''
+A mod adding a single item - Infinite Pie. It is a pie that is infinite. Happy Pi Day!
+'''
+#logoFile = ""
+
+[[dependencies.examplemod]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.examplemod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.examplemod]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.1.12,)"
+ordering = "AFTER"
+side = "BOTH"
