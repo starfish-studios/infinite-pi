@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "load": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "infinite_pie:infinite_pie"
+    ]
+  }
+}

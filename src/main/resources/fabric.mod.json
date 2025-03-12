@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "infinite_pie",
+	"version": "${version}",
+	"name": "Infinite Pie",
+	"description": "A mod adding a single item - Infinite Pie. It is a pie that is infinite. Happy Pi Day!",
+	"accessWidener" : "infinite_pie.accesswidener",
+	"authors": [
+		"Starfish Studios"
+	],
+	"contact": {
+		"homepage": "https://github.com/starfish-studios/infinite-pi/",
+		"issues": "https://github.com/starfish-studios/infinite-pi/issues"
+	},
+	"license":"https://github.com/starfish-studios/infinite-pi/blob/main/LICENSE",
+	"icon": "assets/infinite_pie/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.starfish_studios.infinite_pie.InfinitePie"
+		],
+		"client": [
+			"com.starfish_studios.infinite_pie.IPClient"
+		]
+	},
+	"mixins": [
+		"infinite_pie.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.24",
+		"fabric-api": "*",
+		"minecraft": "~1.20.1",
+		"java": ">=17"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

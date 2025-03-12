@@ -1,0 +1,26 @@
+{
+  "itemGroup.infinite_pie.tab": "Infinite Pie",
+  "item.infinite_pie.infinite_pie": "Infinite Pie",
+
+  "advancements.husbandry.infinite_pie.title": "Unlimited Power",
+  "advancements.husbandry.infinite_pie.description": "Use a Dragon Egg to craft Infinite Pie",
+
+  "advancements.husbandry.pie_times_pi.title": "Pie Times Pi!",
+  "advancements.husbandry.pie_times_pi.description": "Consume Infinite Pie 314 times",
+
+
+  "infinite_pie.midnightconfig.piHunger": "§7Infinite Pi Hunger Value",
+  "infinite_pie.midnightconfig.piHunger.tooltip": "§8§o[?]§7§o Adjusts the Hunger value given from eating Infinite Pie.",
+
+  "infinite_pie.midnightconfig.piSaturation": "§7Infinite Pi Saturation Value",
+  "infinite_pie.midnightconfig.piSaturation.tooltip": "§8§o[?]§7§o Adjusts the Saturation value given from eating Infinite Pie.",
+
+  "infinite_pie.midnightconfig.piMaxStackSize": "§7Infinite Pi Max Stack Size",
+  "infinite_pie.midnightconfig.piMaxStackSize.tooltip": "§8§o[?]§7§o Adjusts the maximum stack size of Infinite Pie.",
+
+  "infinite_pie.midnightconfig.piEatingSpeed": "§7Infinite Pi Eating Speed",
+  "infinite_pie.midnightconfig.piEatingSpeed.tooltip": "§8§o[?]§7§o Adjusts the eating speed of Infinite Pie. 32 is the default food speed, 16 is like Melons.",
+
+  "infinite_pie.midnightconfig.piCooldown": "§7Infinite Pi Cooldown",
+  "infinite_pie.midnightconfig.piCooldown.tooltip": "§8§o[?]§7§o Whether or not Infinite Pie has an eating cooldown."
+}

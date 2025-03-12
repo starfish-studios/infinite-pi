@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "criteria": {
+    "infinite_pie": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "infinite_pie:infinite_pie"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.infinite_pie.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "infinite_pie:infinite_pie"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.infinite_pie.title"
+    }
+  },
+  "requirements": [
+    [
+      "infinite_pie"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

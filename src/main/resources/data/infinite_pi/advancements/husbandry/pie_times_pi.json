@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "infinite_pie:infinite_pie"
+    },
+    "title": {
+      "translate": "advancements.husbandry.pie_times_pi.title"
+    },
+    "description": {
+      "translate": "advancements.husbandry.pie_times_pi.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "manual": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "manual"
+    ]
+  ]
+}
