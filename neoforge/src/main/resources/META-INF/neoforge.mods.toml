@@ -11,28 +11,7 @@ authors = "Starfish Studios"
 description = '''
 A mod adding a single item - Infinite Pie. It is a pie that is infinite. Happy Pi Day!
 '''
-#logoFile = ""
-
-[[dependencies.examplemod]]
-modId = "neoforge"
-type = "required"
-versionRange = "[21.1,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.examplemod]]
-modId = "minecraft"
-type = "required"
-versionRange = "[1.21.1,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.examplemod]]
-modId = "architectury"
-type = "required"
-versionRange = "[13.0.8,)"
-ordering = "AFTER"
-side = "BOTH"
+logoFile = "icon.png"
 
 [[mixins]]
 config = "infinite_pie.mixins.json"

@@ -53,5 +53,7 @@ shadowJar {
 }
 
 remapJar {
-    inputFile.set shadowJar.archiveFile
+    archiveFileName.set("${rootProject.archives_base_name}-${rootProject.mod_version}+neoforge-${rootProject.minecraft_version}.jar")
+    inputFile.set(shadowJar.archiveFile)
 }
+
