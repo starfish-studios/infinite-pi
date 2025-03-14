@@ -15,7 +15,6 @@ loom {
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
         mixinConfig "infinite_pie-common.mixins.json"
-        mixinConfig "infinite_pie.mixins.json"
     }
 }
 

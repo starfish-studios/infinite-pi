@@ -12,3 +12,24 @@ description = '''
 A mod adding a single item - Infinite Pie. It is a pie that is infinite. Happy Pi Day!
 '''
 logoFile="icon.png"
+
+[[dependencies.infinite_pie]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.infinite_pie]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.infinite_pie]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.1.12,)"
+ordering = "AFTER"
+side = "BOTH"
