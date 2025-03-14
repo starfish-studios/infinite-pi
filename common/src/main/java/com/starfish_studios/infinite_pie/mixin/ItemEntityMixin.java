@@ -25,7 +25,7 @@ public abstract class ItemEntityMixin {
 
     @Inject(method = "<init>(Lnet/minecraft/world/level/Level;DDD Lnet/minecraft/world/item/ItemStack;)V", at = @At("TAIL"))
     private void onConstruct(Level world, double x, double y, double z, ItemStack stack, CallbackInfo ci) {
-        if (stack.getItem() == IPItems.INFINITE_PIE) {
+        if (stack.getItem() == IPItems.INFINITE_PIE.get()) {
             this.age = -32768;
             ((ItemEntity)(Object)this).setInvulnerable(true);
         }
@@ -33,7 +33,7 @@ public abstract class ItemEntityMixin {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTick(CallbackInfo ci) {
-        if (getItem().getItem() != IPItems.INFINITE_PIE) {
+        if (getItem().getItem() != IPItems.INFINITE_PIE.get()) {
             return;
         }
 
