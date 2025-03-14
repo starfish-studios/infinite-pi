@@ -23,7 +23,6 @@
     ]
   },
   "mixins": [
-    "infinite_pie.mixins.json",
     "infinite_pie-common.mixins.json"
   ],
   "depends": {
