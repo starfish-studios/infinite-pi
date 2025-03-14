@@ -11,4 +11,4 @@ include("common")
 include("fabric")
 include("forge")
 
-rootProject.name = "infinite_pie"
+rootProject.name = "architectury-example-mod"
