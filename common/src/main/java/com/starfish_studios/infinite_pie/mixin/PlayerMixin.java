@@ -17,7 +17,7 @@ public abstract class PlayerMixin {
 
     @Inject(method = "drop(Lnet/minecraft/world/item/ItemStack;ZZ)Lnet/minecraft/world/entity/item/ItemEntity;", at = @At("RETURN"))
     private void onDrop(ItemStack stack, boolean throwRandomly, boolean retainOwnership, CallbackInfoReturnable<ItemEntity> cir) {
-        if (stack.getItem() == IPItems.INFINITE_PIE) {
+        if (stack.getItem() == IPItems.INFINITE_PIE.get()) {
             Player self = (Player)(Object)this;
             System.out.println("Infinite Pie dropped by " + self.getName().getString());
             stack.set(InfinitePie.INFINITE_PIE_OWNER_COMPONENT.get(), self.getUUID().toString());
